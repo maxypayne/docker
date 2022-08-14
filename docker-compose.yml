@@ -1,0 +1,19 @@
+version: "3"
+services:
+  test-node:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=cerebro
+      - MONGO_INITDB_ROOT_PASSWORD=mypassword
+    volumes:
+      - mongo-db:/data/db
+    
+volumes:
+  mongo-db:
